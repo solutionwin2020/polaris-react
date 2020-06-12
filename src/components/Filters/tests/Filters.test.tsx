@@ -1,6 +1,6 @@
 import React from 'react';
-import {matchMedia} from '@shopify/jest-dom-mocks';
-import {Button, Popover, Sheet, Tag, TextField, TextStyle} from 'components';
+import { matchMedia } from '@shopify/jest-dom-mocks';
+import { Button, Popover, Sheet, Tag, TextField, TextStyle } from 'components';
 // eslint-disable-next-line no-restricted-imports
 import {
   mountWithAppProvider,
@@ -8,12 +8,12 @@ import {
   findByTestID,
   ReactWrapper,
 } from 'test-utilities/legacy';
-import {mountWithApp} from 'test-utilities';
+import { mountWithApp } from 'test-utilities';
 
-import {Filters, FiltersProps} from '../Filters';
-import {ConnectedFilterControl} from '../components';
+import { Filters, FiltersProps } from '../Filters';
+import { ConnectedFilterControl } from '../components';
 
-const MockFilter = (props: {id: string}) => <div id={props.id} />;
+const MockFilter = (props: { id: string }) => <div id={props.id} />;
 const MockChild = () => <div />;
 const mockProps: FiltersProps = {
   onQueryChange: noop,
@@ -91,7 +91,7 @@ describe('<Filters />', () => {
       });
 
       it('renders a sheet on mobile size with bottom origin', () => {
-        matchMedia.setMedia(() => ({matches: true}));
+        matchMedia.setMedia(() => ({ matches: true }));
         const resourceFilters = mountWithAppProvider(
           <Filters {...mockProps} />,
         );
@@ -100,7 +100,7 @@ describe('<Filters />', () => {
       });
 
       it('opens the sheet at mobile size on toggle button click', () => {
-        matchMedia.setMedia(() => ({matches: true}));
+        matchMedia.setMedia(() => ({ matches: true }));
         const resourceFilters = mountWithAppProvider(
           <Filters {...mockProps} />,
         );
@@ -110,7 +110,7 @@ describe('<Filters />', () => {
       });
 
       it('closes the sheet at mobile size on second toggle button click', () => {
-        matchMedia.setMedia(() => ({matches: true}));
+        matchMedia.setMedia(() => ({ matches: true }));
         const resourceFilters = mountWithAppProvider(
           <Filters {...mockProps} />,
         );
@@ -278,7 +278,7 @@ describe('<Filters />', () => {
       );
 
       const connected = resourceFilters.find(ConnectedFilterControl).first();
-      connected.setState({availableWidth: 999});
+      connected.setState({ availableWidth: 999 });
       const shortcut = findByTestID(resourceFilters, 'FilterShortcutContainer')
         .find(Button)
         .first();
@@ -302,7 +302,7 @@ describe('<Filters />', () => {
   describe('appliedFilters', () => {
     it('calls remove callback when tag is clicked', () => {
       const spy = jest.fn();
-      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
+      const appliedFilters = [{ key: 'filterOne', label: 'foo', onRemove: spy }];
 
       const resourceFilters = mountWithAppProvider(
         <Filters
@@ -322,7 +322,7 @@ describe('<Filters />', () => {
 
     it('calls remove callback when clear button is clicked', () => {
       const spy = jest.fn();
-      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: spy}];
+      const appliedFilters = [{ key: 'filterOne', label: 'foo', onRemove: spy }];
 
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockProps} appliedFilters={appliedFilters} />,
@@ -339,8 +339,36 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith('filterOne');
     });
 
+    it('it renders a clear button when clearButton is not provided', () => {
+      const filters = [{ key: 'filterOne', label: 'foo', onRemove: () => { }, filter: null }];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).toContain('clear');
+    });
+
+    it('it doesn\'t renders a clear button when clearButton is not provided', () => {
+      const filters = [{ clearButton: false, key: 'filterOne', label: 'foo', onRemove: () => { }, filter: null }];
+
+      const resourceFilters = mountWithAppProvider(
+        <Filters {...mockProps} filters={filters} />,
+      );
+
+      trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
+      trigger(findById(resourceFilters, 'filterOneToggleButton'), 'onClick');
+      const collapsible = findById(resourceFilters, 'filterOneCollapsible');
+
+      expect(collapsible.text().toLowerCase()).not.toContain('clear');
+    });
+
     it('tags are not shown if hideTags prop is given', () => {
-      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
+      const appliedFilters = [{ key: 'filterOne', label: 'foo', onRemove: noop }];
 
       const resourceFilters = mountWithAppProvider(
         <Filters
@@ -355,8 +383,8 @@ describe('<Filters />', () => {
 
     it('applied filter count is shown if hideTags prop is given', () => {
       const appliedFilters = [
-        {key: 'filterOne', label: 'foo', onRemove: noop},
-        {key: 'filterTwo', label: 'bar', onRemove: noop},
+        { key: 'filterOne', label: 'foo', onRemove: noop },
+        { key: 'filterTwo', label: 'bar', onRemove: noop },
       ];
 
       const resourceFilters = mountWithAppProvider(
@@ -424,7 +452,7 @@ describe('<Filters />', () => {
     });
 
     it('is passed to <Tag /> with set value', () => {
-      const appliedFilters = [{key: 'filterOne', label: 'foo', onRemove: noop}];
+      const appliedFilters = [{ key: 'filterOne', label: 'foo', onRemove: noop }];
 
       const resourceFilters = mountWithAppProvider(
         <Filters {...mockProps} appliedFilters={appliedFilters} disabled />,
@@ -444,7 +472,7 @@ describe('<Filters />', () => {
         trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
 
         mockProps.filters
-          .filter(({disabled}) => disabled)
+          .filter(({ disabled }) => disabled)
           .forEach((filter) => {
             const toggleButton = findById(
               resourceFilters,
@@ -465,7 +493,7 @@ describe('<Filters />', () => {
         trigger(findByTestID(resourceFilters, 'SheetToggleButton'), 'onClick');
 
         mockProps.filters
-          .filter(({disabled}) => !disabled)
+          .filter(({ disabled }) => !disabled)
           .forEach((filter) => {
             const toggleButton = findById(
               resourceFilters,
@@ -503,10 +531,10 @@ describe('<Filters />', () => {
   describe('newDesignLanguage', () => {
     it('adds a newDesignLanguage class when newDesignLanguage is enabled', () => {
       const filters = mountWithApp(<Filters {...mockProps} disabled />, {
-        features: {newDesignLanguage: true},
+        features: { newDesignLanguage: true },
       });
 
-      filters.find('button', {disabled: true})!.trigger('onClick');
+      filters.find('button', { disabled: true })!.trigger('onClick');
 
       expect(filters).toContainReactComponent('button', {
         className: 'FilterTrigger newDesignLanguage',
@@ -515,10 +543,10 @@ describe('<Filters />', () => {
 
     it('does not add a newDesignLanguage class when newDesignLanguage is disabled', () => {
       const filters = mountWithApp(<Filters {...mockProps} disabled />, {
-        features: {newDesignLanguage: false},
+        features: { newDesignLanguage: false },
       });
 
-      filters.find('button', {disabled: true})!.trigger('onClick');
+      filters.find('button', { disabled: true })!.trigger('onClick');
 
       expect(filters).not.toContainReactComponent('button', {
         className: 'FilterTrigger newDesignLanguage',
@@ -527,7 +555,7 @@ describe('<Filters />', () => {
   });
 });
 
-function noop() {}
+function noop() { }
 
 function findById(wrapper: ReactWrapper, id: string) {
   return wrapper.find(`#${id}`).first();
