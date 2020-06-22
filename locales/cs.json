@@ -278,7 +278,8 @@
             "one": "{secondCount} s"
           }
         }
-      }
+      },
+      "progressExceedWarning": "Hodnota předaná jako stav průběhu videa nesmí překročit délku videa. Resetování stavu průběhu na 100 %."
     }
   }
 }
