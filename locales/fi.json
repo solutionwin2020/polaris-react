@@ -278,7 +278,8 @@
             "one": "{secondCount} sekunti"
           }
         }
-      }
+      },
+      "progressExceedWarning": "Videon edistymiseen siirretty arvo ei saa ylittää videon pituutta. Palautetaan edistyminen 100 prosenttiin."
     }
   }
 }
