@@ -278,7 +278,8 @@
             "one": "{secondCount} segundo"
           }
         }
-      }
+      },
+      "progressExceedWarning": "O valor passado para o progresso de vídeo não deve exceder a duração do vídeo. Reposição de progresso para 100%."
     }
   }
 }
