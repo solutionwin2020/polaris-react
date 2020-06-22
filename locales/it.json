@@ -278,7 +278,8 @@
             "one": "{secondCount} secondo"
           }
         }
-      }
+      },
+      "progressExceedWarning": "Il valore passato all'avanzamento video non deve superare la lunghezza del video. Ripristino avanzamento al 100%."
     }
   }
 }
