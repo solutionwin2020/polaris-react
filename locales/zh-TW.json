@@ -278,7 +278,8 @@
             "one": "{secondCount} 秒"
           }
         }
-      }
+      },
+      "progressExceedWarning": "傳送至影片播放進度的數值不應超過影片長度。正在將進度重設為 100%。"
     }
   }
 }
