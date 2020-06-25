@@ -278,8 +278,7 @@
             "one": "{secondCount} sekund"
           }
         }
-      },
-      "progressExceedWarning": "Värdet som skickas för videobearbetning ska inte överstiga videolängden. Återställer bearbetningen till 100 %."
+      }
     }
   }
 }

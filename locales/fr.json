@@ -278,8 +278,7 @@
             "one": "{secondCount} seconde"
           }
         }
-      },
-      "progressExceedWarning": "La valeur transmise à la progression de la vidéo ne doit pas dépasser la longueur de celle-ci. Réinitialisation de la progression à 100 %."
+      }
     }
   }
 }

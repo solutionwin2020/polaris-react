@@ -278,8 +278,7 @@
             "one": "{secondCount} seconde"
           }
         }
-      },
-      "progressExceedWarning": "Waarde die wordt doorgegeven naar de voortgang van de video, mag niet de maximum lengte van de video overschrijden. Voortgang wordt opnieuw ingesteld op 100%."
+      }
     }
   }
 }

@@ -278,8 +278,7 @@
             "one": "{secondCount} sekund"
           }
         }
-      },
-      "progressExceedWarning": "Verdien som sendes til videofremgangen kan ikke overstige videoens lengde. Tilbakestiller fremgangen til 100 %."
+      }
     }
   }
 }

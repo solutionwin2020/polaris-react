@@ -278,8 +278,7 @@
             "one": "{secondCount} sekund"
           }
         }
-      },
-      "progressExceedWarning": "Den værdi, der overføres til videoforløbet, må ikke overstige videolængden. Nulstilling af fremskridt til 100 %."
+      }
     }
   }
 }

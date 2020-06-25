@@ -278,8 +278,7 @@
             "one": "{secondCount} Sekunde"
           }
         }
-      },
-      "progressExceedWarning": "Der Wert, der an die Videofortschrittsanzeige übergeben wird, darf die Länge des Videos nicht überschreiten. Der Fortschritt wird auf 100% zurückgesetzt."
+      }
     }
   }
 }

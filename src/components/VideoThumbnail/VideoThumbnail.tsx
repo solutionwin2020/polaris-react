@@ -66,11 +66,7 @@ export function VideoThumbnail({
     );
   }
 
-  const progressValue = calculateProgress(
-    videoLength,
-    videoProgress,
-    i18n.translate('Polaris.VideoThumbnail.progressExceedWarning'),
-  );
+  const progressValue = calculateProgress(videoLength, videoProgress);
 
   const timeStampMarkup = videoLength ? (
     <p
@@ -118,14 +114,12 @@ export function VideoThumbnail({
   );
 }
 
-function calculateProgress(
-  videoLength: number,
-  videoProgress: number,
-  warning: string,
-) {
+function calculateProgress(videoLength: number, videoProgress: number) {
   if (videoProgress > videoLength && process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
-    console.warn(warning);
+    console.warn(
+      'Value passed to the video progress should not exceed video length. Resetting progress to 100%.',
+    );
   }
 
   if (videoProgress > 0 && videoLength > 0) {

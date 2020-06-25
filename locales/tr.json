@@ -278,8 +278,7 @@
             "one": "{secondCount} saniye"
           }
         }
-      },
-      "progressExceedWarning": "Video ilerlemesine geçirilen değerler video uzunluğunu aşmamalıdır. İlerleme durumu %100 olacak şekilde sıfırlanıyor."
+      }
     }
   }
 }

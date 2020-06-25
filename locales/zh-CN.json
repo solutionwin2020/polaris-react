@@ -278,8 +278,7 @@
             "one": "{secondCount} 秒"
           }
         }
-      },
-      "progressExceedWarning": "传递给视频进度的值不应超过视频长度。将进度重置为 100%。"
+      }
     }
   }
 }

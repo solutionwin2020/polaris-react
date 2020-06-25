@@ -278,8 +278,7 @@
             "one": "{secondCount} sekunda"
           }
         }
-      },
-      "progressExceedWarning": "Wartość przekazywana do postępu wideo nie powinna przekraczać długości wideo. Zresetowanie postępu do 100%."
+      }
     }
   }
 }
