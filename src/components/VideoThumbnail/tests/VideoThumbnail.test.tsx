@@ -135,7 +135,7 @@ describe('<VideoThumbnail />', () => {
       });
     });
 
-    it('warns when video progress exceeds video length', () => {
+    it('warns when video progress exceeds video length in development environment', () => {
       process.env.NODE_ENV = 'development';
 
       mountWithApp(
@@ -145,6 +145,16 @@ describe('<VideoThumbnail />', () => {
       expect(warnSpy).toHaveBeenCalledWith(
         'Value passed to the video progress should not exceed video length. Resetting progress to 100%.',
       );
+    });
+
+    it('does not warn when video progress exceeds video length in production environment', () => {
+      process.env.NODE_ENV = 'production';
+
+      mountWithApp(
+        <VideoThumbnail {...mockProps} videoLength={100} videoProgress={101} />,
+      );
+
+      expect(warnSpy).not.toHaveBeenCalled();
     });
   });
 

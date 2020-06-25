@@ -20,7 +20,7 @@ export interface VideoThumbnailProps {
    */
   videoLength?: number;
   /**
-   * Video progress in seconds.
+   * Video progress in seconds. Displays a progress bar at the bottom of the thumbnail. Only renders when videoLength is also set.
    * @default 0
    */
   videoProgress?: number;
@@ -123,7 +123,7 @@ function calculateProgress(
   videoProgress: number,
   warning: string,
 ) {
-  if (videoProgress > videoLength) {
+  if (videoProgress > videoLength && process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
     console.warn(warning);
   }
