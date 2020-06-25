@@ -55,6 +55,7 @@ Use as a play button for a video player within a media card.
 ```
 
 ### Video thumbnail with progress
+Use to indicate the video’s play progress in relation to its duration.
 
 Use to indicate the video’s play progress in relation to its duration.
 
