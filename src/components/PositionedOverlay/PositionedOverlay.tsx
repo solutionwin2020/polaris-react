@@ -37,7 +37,7 @@ export interface PositionedOverlayProps {
   preferredAlignment?: PreferredAlignment;
   fullWidth?: boolean;
   fixed?: boolean;
-  notRetain?: boolean;
+  preventInteraction?: boolean;
   classNames?: string;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
@@ -123,7 +123,12 @@ export class PositionedOverlay extends React.PureComponent<
 
   render() {
     const {left, right, top, zIndex, width} = this.state;
-    const {render, fixed, notRetain, classNames: propClassNames} = this.props;
+    const {
+      render,
+      fixed,
+      preventInteraction,
+      classNames: propClassNames,
+    } = this.props;
 
     const style = {
       top: top == null || isNaN(top) ? undefined : top,
@@ -136,7 +141,7 @@ export class PositionedOverlay extends React.PureComponent<
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
-      notRetain && styles.notRetain,
+      preventInteraction && styles.preventInteraction,
       propClassNames,
     );
 
